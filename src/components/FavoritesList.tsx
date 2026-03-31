@@ -58,7 +58,7 @@ export const FavoritesList = ({ onSelect }: Props) => {
                 onClick={() => {
                   const characterToSelect = {
                     ...fav,
-                    id: fav.apiId,
+                    id: fav.apiId as number,
                   };
 
                   onSelect(characterToSelect);

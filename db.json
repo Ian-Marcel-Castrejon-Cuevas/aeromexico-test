@@ -1,4 +1,48 @@
 {
-  "favorites": [],
+  "favorites": [
+    {
+      "id": "V4rfa4bXX4k",
+      "name": "Antenna Morty",
+      "status": "Alive",
+      "species": "Human",
+      "type": "Human with antennae",
+      "gender": "Male",
+      "image": "https://rickandmortyapi.com/api/character/avatar/18.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/10",
+        "https://rickandmortyapi.com/api/episode/28"
+      ],
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "apiId": 18
+    },
+    {
+      "id": "bSE0iI3Qjsk",
+      "name": "Adjudicator Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/28"
+      ],
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "apiId": 8
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

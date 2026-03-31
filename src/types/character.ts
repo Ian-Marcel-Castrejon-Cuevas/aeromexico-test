@@ -1,5 +1,6 @@
 export interface Character {
   id: number
+  apiId?: number;
   name: string
   status: string
   species: string
