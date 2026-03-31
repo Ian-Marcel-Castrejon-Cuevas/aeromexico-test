@@ -49,7 +49,7 @@ export const FavoritesList = ({ onSelect }: Props) => {
       {open && (
         <div className={styles.dropdown}>
           {favorites.length === 0 ? (
-            <p>No favorites</p>
+            <p className="noResults">No favorites</p>
           ) : (
             favorites.map((fav) => (
               <div

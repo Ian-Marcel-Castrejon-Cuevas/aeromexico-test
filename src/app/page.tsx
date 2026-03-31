@@ -10,12 +10,17 @@ export default function Home() {
   const { characters, loading } = useCharacters();
 
   const [selected, setSelected] = useState<Character | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (characters.length > 0) {
       setSelected(characters[0]);
     }
   }, [characters]);
+
+  const filteredCharacters = characters.filter((char) =>
+    char.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   if (loading) return <p>Loading...</p>;
 
@@ -81,8 +86,14 @@ export default function Home() {
         <div className="right">
           <div className="searchContainer">
             <span className="searchIcon"></span>
-            <input className="search" placeholder="Find your character..." />
+            <input
+              className="search"
+              placeholder="Find your character..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
+
           <div className="gridContainer">
             <button
               className="arrow up"
@@ -93,14 +104,18 @@ export default function Home() {
             />
 
             <div className="grid" id="grid">
-              {characters.map((char) => (
-                <CharacterCard
-                  key={char.id}
-                  character={char}
-                  onSelect={() => setSelected(char)}
-                  isSelected={selected?.id === char.id}
-                />
-              ))}
+              {filteredCharacters.length === 0 ? (
+                <p className="noResults">No results found</p>
+              ) : (
+                filteredCharacters.map((char) => (
+                  <CharacterCard
+                    key={char.id}
+                    character={char}
+                    onSelect={() => setSelected(char)}
+                    isSelected={selected?.id === char.id}
+                  />
+                ))
+              )}
             </div>
 
             <button
@@ -111,7 +126,8 @@ export default function Home() {
               }}
             />
           </div>
-          <FavoritesList onSelect={setSelected} />{" "}
+
+          <FavoritesList onSelect={setSelected} />
         </div>
       </div>
     </main>

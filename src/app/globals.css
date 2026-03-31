@@ -86,6 +86,27 @@ body {
   width: 100%;
 }
 
+.search::placeholder {
+  color: #00ff00;
+  opacity: 1;
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+.search:focus-visible {
+  outline: none;
+}
+
+.noResults {
+  color: #00ff00;
+  text-align: center;
+  width: 100%;
+  font-size: clamp(14px, 1vw, 18px);
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
