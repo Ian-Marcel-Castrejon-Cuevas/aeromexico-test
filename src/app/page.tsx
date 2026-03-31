@@ -25,8 +25,21 @@ export default function Home() {
         <div className="left">
           <div className="imageContainer">
             <div className="status">
-              <span className="dot"></span>
-              {selected?.status}
+              <span
+                className={`dot ${
+                  selected?.status === "Dead"
+                    ? "dead"
+                    : selected?.status === "Alive"
+                      ? "alive"
+                      : ""
+                }`}
+              ></span>
+
+              {selected?.status === "Alive"
+                ? "VIVO"
+                : selected?.status === "Dead"
+                  ? "MUERTO"
+                  : selected?.status}
             </div>
 
             <img

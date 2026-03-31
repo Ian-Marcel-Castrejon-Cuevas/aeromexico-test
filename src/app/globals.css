@@ -233,3 +233,11 @@ body {
   font-size: 11px;
   margin: 0;
 }
+
+.dot.alive {
+  background: #00ff00;
+}
+
+.dot.dead {
+  background: #ff3b3b;
+}
