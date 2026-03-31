@@ -166,3 +166,70 @@ body {
   bottom: 0;
   transform: rotate(180deg);
 }
+
+.imageContainer {
+  position: relative;
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 12px;
+  color: white;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #00ff00;
+  border-radius: 50%;
+}
+
+.infoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px;
+  border-radius: 0 0 12px 12px;
+}
+
+.infoOverlay h2 {
+  color: #00ff00;
+  font-size: 16px;
+  margin: 0;
+}
+
+.infoOverlay p {
+  font-size: 12px;
+  margin: 2px 0;
+  color: #ccc;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.stats span {
+  color: #00ff00;
+  font-size: 11px;
+}
+
+.stats p {
+  font-size: 11px;
+  margin: 0;
+}

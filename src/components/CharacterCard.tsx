@@ -2,50 +2,24 @@
 
 import styles from "../styles/CharacterCard.module.css";
 import { Character } from "../types/character";
-import {
-  addFavorite,
-  removeFavorite,
-  getFavorites,
-} from "../services/favorites";
-import { useEffect, useState } from "react";
 
 interface Props {
   character: Character;
+  onSelect: () => void;
+  isSelected: boolean;
 }
 
-export const CharacterCard = ({ character }: Props) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    const checkFavorite = async () => {
-      const favs = await getFavorites();
-      const exists = favs.find((f) => f.apiId === character.id);
-      setIsFavorite(!!exists);
-    };
-
-    checkFavorite();
-  }, [character.id]);
-
-  const handleFavorite = async () => {
-    if (isFavorite) {
-      await removeFavorite(character.id);
-      setIsFavorite(false);
-    } else {
-      await addFavorite(character);
-      setIsFavorite(true);
-    }
-
-    window.dispatchEvent(new Event("favoritesUpdated"));
-  };
-
+export const CharacterCard = ({ character, onSelect, isSelected }: Props) => {
   return (
-    <div className={styles.card}>
-      <h3>{character.name.split(" ")[0]}</h3>
+    <div
+      className={`${styles.card} ${isSelected ? styles.active : ""}`}
+      onClick={onSelect}
+    >
       <img src={character.image} alt={character.name} />
 
-      <button className={styles.likeButton} onClick={handleFavorite}>
-        {isFavorite ? "💔 Unlike" : "❤️ Like"}
-      </button>
+      <h3>{character.name}</h3>
+
+      <button className={styles.likeButton}>❤️ Like</button>
     </div>
   );
 };

@@ -24,6 +24,12 @@ export const fetchCharacters = async (): Promise<Character[]> => {
     id: char.id,
     name: char.name,
     status: char.status,
+    species: char.species,
+    type: char.type,
+    gender: char.gender,
+    origin: char.origin,
+    location: char.location,
     image: char.image,
+    episode: char.episode,
   }))
 }

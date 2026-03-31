@@ -3,9 +3,19 @@
 import { useCharacters } from "../hooks/useCharacters";
 import { CharacterCard } from "../components/CharacterCard";
 import { FavoritesList } from "../components/FavoritesList";
+import { useState, useEffect } from "react";
+import { Character } from "../types/character";
 
 export default function Home() {
   const { characters, loading } = useCharacters();
+
+  const [selected, setSelected] = useState<Character | null>(null);
+
+  useEffect(() => {
+    if (characters.length > 0) {
+      setSelected(characters[0]);
+    }
+  }, [characters]);
 
   if (loading) return <p>Loading...</p>;
 
@@ -13,19 +23,51 @@ export default function Home() {
     <main className="container">
       <div className="panel">
         <div className="left">
-          <img
-            src={characters[0]?.image}
-            alt="selected"
-            className="mainImage"
-          />
+          <div className="imageContainer">
+            <div className="status">
+              <span className="dot"></span>
+              {selected?.status}
+            </div>
+
+            <img
+              src={selected?.image}
+              alt={selected?.name}
+              className="mainImage"
+            />
+
+            <div className="infoOverlay">
+              <h2>{selected?.name}</h2>
+              <p>{selected?.species}</p>
+              <p>{selected?.type || ""}</p>
+
+              <div className="stats">
+                <div>
+                  <span>Origin</span>
+                  <p>{selected?.origin?.name}</p>
+                </div>
+
+                <div>
+                  <span>Location</span>
+                  <p>{selected?.location?.name}</p>
+                </div>
+
+                <div>
+                  <span>Gender</span>
+                  <p>{selected?.gender}</p>
+                </div>
+
+                <div>
+                  <span>Episodes</span>
+                  <p>{selected?.episode?.length}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="right">
-          
-
           <div className="searchContainer">
             <span className="searchIcon"></span>
-
             <input className="search" placeholder="Find your character..." />
           </div>
 
@@ -40,7 +82,12 @@ export default function Home() {
 
             <div className="grid" id="grid">
               {characters.map((char) => (
-                <CharacterCard key={char.id} character={char} />
+                <CharacterCard
+                  key={char.id}
+                  character={char}
+                  onSelect={() => setSelected(char)}
+                  isSelected={selected?.id === char.id}
+                />
               ))}
             </div>
 
@@ -53,8 +100,7 @@ export default function Home() {
             />
           </div>
 
-              <FavoritesList />
-
+          <FavoritesList />
         </div>
       </div>
     </main>
