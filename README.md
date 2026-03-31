@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Aeromexico Test - Rick & Morty App
 
-## Getting Started
+Aplicación web desarrollada con **Next.js + TypeScript** que consume la API de Rick & Morty, permitiendo visualizar personajes y gestionar favoritos usando JSON Server.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 Descripción
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esta aplicación permite explorar personajes de la serie _Rick & Morty_ a través de una interfaz interactiva y responsive.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Funcionalidades principales:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Visualización de personajes en formato grid
+- Selección de personaje con panel de detalle dinámico
+- Gestión de favoritos mediante estado global
+- Persistencia de datos con JSON Server
+- Diseño adaptable a dispositivos móviles
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tecnologías utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ⚛️ **Next.js**
+- 📘 **TypeScript**
+- 🎨 **CSS Modules + Global CSS**
+- 🌐 **Fetch API**
+- 🗄️ **JSON Server** (mock backend)
+- 📦 **Node.js**
+- 🧠 **Redux + Redux Saga** (manejo de estado global y efectos)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📡 API utilizada
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Se utilizó la API pública de Rick & Morty:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔗 https://rickandmortyapi.com/  
+🔗 https://rickandmortyapi.com/api/character
+
+---
+
+## 🧠 Arquitectura del proyecto
+
+El proyecto sigue una estructura modular y escalable basada en separación de responsabilidades:
+
+src/
+│
+├── components/ # Componentes reutilizables
+├── hooks/ # Hooks personalizados (useCharacters)
+├── services/ # Lógica de consumo de APIs
+├── types/ # Tipos TypeScript
+├── styles/ # Estilos CSS
+└── app/ # Páginas (Next.js)
+
+---
+
+## ⚙️ Instalación
+
+### 1. Clonar repositorio
+
+1.1 git clone https://github.com/Ian-Marcel-Castrejon-Cuevas/aeromexico-test
+
+1.2 cd aeromexico-test
+
+### 2. Instalar dependencias
+
+2.1 npm install
+
+### 3. Ejecutar proyecto
+
+3.1 npm run dev
+
+### 4. Ejecutar json-server
+
+4.1 npx json-server --watch db.json --port 3001
+
+### 5. App Disponible
+
+App: http://localhost:3000
+API local: http://localhost:3001
+
+---
+
+## ⭐ Funcionalidades
+
+🔹 Listado de personajes
+
+- Consumo de API externa
+- Renderizado en grid
+- Manejo de estado de carga
+
+🔹 Detalle de personaje
+
+Al seleccionar una tarjeta se muestra:
+
+- Nombre
+- Especie
+- Tipo
+- Origen
+- Ubicación
+- Género
+- Número de episodios
+
+🔹 Estado del personaje
+
+- Alive → 🟢 VIVO
+- Dead → 🔴 MUERTO
+
+🔹Sistema de favoritos (Redux)
+
+- Manejo mediante estado global con Redux
+- Acciones centralizadas (agregar/eliminar)
+- Control de duplicados desde el store
+- Persistencia usando Redux Saga + JSON Server
+- Sincronización automática entre UI y backend
+
+🔹 UI / UX
+
+- Basado en diseño Figma
+- Panel dividido (detalle + listado)
+- Scroll con flechas personalizadas
+- Barra de búsqueda estilizada
+- Indicadores visuales (hover, selección, favoritos)
+
+🔹 Responsive
+
+- Adaptado a dispositivos móviles
+- Reorganización de layout
+- Stats en formato de 2 columnas
+- Ajuste de tamaños dinámicos
+
+---
+
+## 🎯 Decisiones técnicas
+
+- Uso de Redux para centralizar la lógica de favoritos
+- Implementación de Redux Saga para manejar efectos secundarios (peticiones HTTP)
+- Separación clara por capas: components, hooks, services y store
+- Uso de hooks personalizados para lógica reutilizable
+- Tipado fuerte con TypeScript para mayor robustez
+
+---
+
+## 🐞 Problemas resueltos
+
+❌ Error de map undefined → manejo correcto de respuesta API
+❌ Hydration mismatch → control de renderizado
+❌ Duplicados en favoritos → validación previa
+❌ Click en botón afectaba card → stopPropagation
+❌ Layout roto en mobile → media queries
+
+---
+
+## 💡 ¿Qué es lo que más te gustó de TU desarrollo?
+
+Uno de los aspectos más interesantes fue la implementación de la interfaz visual, especialmente el uso de estilos modernos como glassmorphism y efectos de selección en las tarjetas. También disfruté estructurar la aplicación de manera clara y escalable utilizando buenas prácticas con React y TypeScript.
+
+---
+
+## 🚧 ¿Qué mejoraría con más tiempo?
+
+- Implementar animaciones más avanzadas (por ejemplo, con Framer Motion)
+- Mejorar la accesibilidad (ARIA labels, navegación con teclado)
+- Agregar pruebas unitarias completas
+- Optimizar performance (memoización, lazy loading)
+- Persistencia de favoritos en backend real
