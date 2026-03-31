@@ -74,6 +74,19 @@ API local: http://localhost:3001
 
 ---
 
+## 🧪 Pruebas unitarias
+
+⚠️ Nota: Actualmente el proyecto no incluye pruebas automatizadas completas
+
+Sugerencias de pruebas a implementar:
+
+- Renderizado de componentes (CharacterCard)
+- Funcionalidad de favoritos (Redux)
+- Llamadas a API (mockeadas)
+- Hooks personalizados
+
+---
+
 ## ⭐ Funcionalidades
 
 🔹 Listado de personajes
@@ -136,11 +149,11 @@ Al seleccionar una tarjeta se muestra:
 
 ## 🐞 Problemas resueltos
 
-❌ Error de map undefined → manejo correcto de respuesta API
-❌ Hydration mismatch → control de renderizado
-❌ Duplicados en favoritos → validación previa
-❌ Click en botón afectaba card → stopPropagation
-❌ Layout roto en mobile → media queries
+- ❌ Error de map undefined → manejo correcto de respuesta API
+- ❌ Hydration mismatch → control de renderizado
+- ❌ Duplicados en favoritos → validación previa
+- ❌ Click en botón afectaba card → stopPropagation
+- ❌ Layout roto en mobile → media queries
 
 ---
 
