@@ -2,12 +2,12 @@
 
 import styles from "../styles/CharacterCard.module.css";
 import { Character } from "../types/character";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addFavorite,
   removeFavorite,
-  getFavorites,
-} from "../services/favorites";
+} from "../features/favorites/favoritesSlice";
+import { RootState } from "../store";
 
 interface Props {
   character: Character;
@@ -16,28 +16,20 @@ interface Props {
 }
 
 export const CharacterCard = ({ character, onSelect, isSelected }: Props) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const checkFavorite = async () => {
-      const favs = await getFavorites();
-      const exists = favs.find((f) => f.apiId === character.id);
-      setIsFavorite(!!exists);
-    };
+  const favorites = useSelector((state: RootState) => state.favorites.items);
 
-    checkFavorite();
-  }, [character.id]);
+  const isFavorite = favorites.some((f) => f.id === character.id);
 
-  const handleFavorite = async () => {
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
     if (isFavorite) {
-      await removeFavorite(character.id);
-      setIsFavorite(false);
+      dispatch(removeFavorite(character.id));
     } else {
-      await addFavorite(character);
-      setIsFavorite(true);
+      dispatch(addFavorite(character));
     }
-
-    window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
   return (
@@ -50,13 +42,7 @@ export const CharacterCard = ({ character, onSelect, isSelected }: Props) => {
 
       <img src={character.image} alt={character.name} />
 
-      <button
-        className={styles.likeButton}
-        onClick={(e) => {
-          e.stopPropagation();
-          handleFavorite();
-        }}
-      >
+      <button className={styles.likeButton} onClick={handleFavorite}>
         {isFavorite ? "💔 Unlike" : "❤️ Like"}
       </button>
     </div>

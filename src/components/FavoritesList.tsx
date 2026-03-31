@@ -1,47 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getFavorites } from "../services/favorites";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 import { Character } from "../types/character";
 import styles from "../styles/FavoritesList.module.css";
+import { useState } from "react";
 
 type Props = {
   onSelect: (character: Character) => void;
 };
 
 export const FavoritesList = ({ onSelect }: Props) => {
-  const [favorites, setFavorites] = useState<Character[]>([]);
+  const favorites = useSelector((state: RootState) => state.favorites.items);
+
   const [open, setOpen] = useState(false);
-
-  const loadFavorites = async () => {
-    const data = await getFavorites();
-    setFavorites(data);
-  };
-
-  useEffect(() => {
-    loadFavorites();
-
-    const handleUpdate = () => {
-      loadFavorites();
-    };
-
-    window.addEventListener("favoritesUpdated", handleUpdate);
-
-    return () => {
-      window.removeEventListener("favoritesUpdated", handleUpdate);
-    };
-  }, []);
-
-  const toggle = () => {
-    setOpen(!open);
-    if (!open) loadFavorites();
-  };
 
   return (
     <div className={styles.container}>
       <button
         className={`${styles.button} ${open ? styles.active : ""}`}
-        onClick={toggle}
+        onClick={() => setOpen(!open)}
       >
         FAVS
       </button>
@@ -56,15 +34,10 @@ export const FavoritesList = ({ onSelect }: Props) => {
                 key={fav.id}
                 className={styles.item}
                 onClick={() => {
-                  const characterToSelect = {
-                    ...fav,
-                    id: fav.apiId as number,
-                  };
-
-                  onSelect(characterToSelect);
+                  onSelect(fav);
                   setOpen(false);
 
-                  const item = document.getElementById(`char-${fav.apiId}`);
+                  const item = document.getElementById(`char-${fav.id}`);
                   item?.scrollIntoView({
                     behavior: "smooth",
                     block: "center",

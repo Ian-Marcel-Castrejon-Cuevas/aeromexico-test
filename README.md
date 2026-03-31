@@ -43,14 +43,7 @@ Se utilizó la API pública de Rick & Morty:
 
 El proyecto sigue una estructura modular y escalable basada en separación de responsabilidades:
 
-src/
-│
-├── components/ # Componentes reutilizables
-├── hooks/ # Hooks personalizados (useCharacters)
-├── services/ # Lógica de consumo de APIs
-├── types/ # Tipos TypeScript
-├── styles/ # Estilos CSS
-└── app/ # Páginas (Next.js)
+![Arquitectura](https://i.ibb.co/pjckSwPb/Captura-de-pantalla-2026-03-31-095732.png)
 
 ---
 
