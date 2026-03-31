@@ -21,7 +21,7 @@ export const addFavorite = async (character: Character) => {
     },
     body: JSON.stringify({
       ...character,
-      apiId: character.id, // 🔥 clave
+      apiId: character.id,
     }),
   })
 }

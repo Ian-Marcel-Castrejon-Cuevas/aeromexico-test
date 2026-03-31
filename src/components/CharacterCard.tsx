@@ -23,13 +23,15 @@ export const CharacterCard = ({ character }: Props) => {
   }, [character.id])
 
   const handleFavorite = async () => {
-    if (isFavorite) {
-      await removeFavorite(character.id)
-      setIsFavorite(false)
-    } else {
-      await addFavorite(character)
-      setIsFavorite(true)
-    }
+  if (isFavorite) {
+    await removeFavorite(character.id)
+    setIsFavorite(false)
+  } else {
+    await addFavorite(character)
+    setIsFavorite(true)
+  }
+
+    window.dispatchEvent(new Event('favoritesUpdated'))
   }
 
   return (

@@ -2,6 +2,7 @@
 
 import { useCharacters } from '../hooks/useCharacters'
 import { CharacterCard } from '../components/CharacterCard'
+import { FavoritesList } from '../components/FavoritesList'
 
 export default function Home() {
   const { characters, loading } = useCharacters()
@@ -11,6 +12,8 @@ export default function Home() {
   return (
     <main style={{ padding: 20 }}>
       <h1>Characters</h1>
+
+      <FavoritesList />
 
       <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         {characters.map((char) => (

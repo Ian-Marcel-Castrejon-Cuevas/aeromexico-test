@@ -17,7 +17,6 @@ export const fetchCharacters = async (): Promise<Character[]> => {
     console.warn('rickmortyapi failed')
   }
 
-  // fallback seguro
   const res = await fetch('https://rickandmortyapi.com/api/character')
   const data = await res.json()
 
