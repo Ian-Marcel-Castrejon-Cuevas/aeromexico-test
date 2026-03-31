@@ -1,0 +1,36 @@
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  color: white;
+  width: 180px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.alive {
+  color: #00ff88;
+}
+
+.dead {
+  color: #ff4d4d;
+}
+
+.likeButton {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}

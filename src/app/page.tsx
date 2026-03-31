@@ -1,6 +1,7 @@
 'use client'
 
 import { useCharacters } from '../hooks/useCharacters'
+import { CharacterCard } from '../components/CharacterCard'
 
 export default function Home() {
   const { characters, loading } = useCharacters()
@@ -11,11 +12,11 @@ export default function Home() {
     <main style={{ padding: 20 }}>
       <h1>Characters</h1>
 
-      {characters.map((char) => (
-        <div key={char.id}>
-          <p>{char.name}</p>
-        </div>
-      ))}
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+        {characters.map((char) => (
+          <CharacterCard key={char.id} character={char} />
+        ))}
+      </div>
     </main>
   )
 }
