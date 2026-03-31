@@ -8,18 +8,32 @@ export const getFavorites = async (): Promise<Character[]> => {
 }
 
 export const addFavorite = async (character: Character) => {
+  const existing = await getFavorites()
+
+  const exists = existing.find((f) => f.apiId === character.id)
+
+  if (exists) return
+
   await fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(character),
+    body: JSON.stringify({
+      ...character,
+      apiId: character.id, // 🔥 clave
+    }),
   })
 }
 
-// eliminar favorito
-export const removeFavorite = async (id: number) => {
-  await fetch(`${BASE_URL}/${id}`, {
+export const removeFavorite = async (apiId: number) => {
+  const existing = await getFavorites()
+
+  const item = existing.find((f) => f.apiId === apiId)
+
+  if (!item) return
+
+  await fetch(`${BASE_URL}/${item.id}`, {
     method: 'DELETE',
   })
 }
