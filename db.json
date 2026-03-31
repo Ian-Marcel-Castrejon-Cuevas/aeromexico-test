@@ -1,12 +1,4 @@
 {
-  "favorites": [
-    {
-      "id": "fYseipus3Mg",
-      "name": "Abradolf Lincler",
-      "status": "unknown",
-      "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
-      "apiId": 7
-    }
-  ],
+  "favorites": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

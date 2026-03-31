@@ -36,7 +36,7 @@ export const FavoritesList = () => {
   return (
     <div className={styles.container}>
       <button className={styles.button} onClick={toggle}>
-        FAVS ({favorites.length})
+        FAVS 
       </button>
 
       {open && (

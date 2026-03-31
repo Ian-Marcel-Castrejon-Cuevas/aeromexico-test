@@ -1,36 +1,30 @@
 .card {
-  background: #1e1e1e;
+  background: #2a2a2a;
   border-radius: 12px;
-  padding: 12px;
+  padding: 8px;
   text-align: center;
   color: white;
-  width: 180px;
-  transition: transform 0.2s ease;
+
+  width: 150px;
+  margin: 0 auto;
+  border: 1px;
+
+  transition: 0.2s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  border: 1px solid #00ff00;
 }
 
 .card img {
   width: 100%;
-  border-radius: 8px;
-}
-
-.alive {
-  color: #00ff88;
-}
-
-.dead {
-  color: #ff4d4d;
+  border-radius: 10px;
 }
 
 .likeButton {
-  margin-top: 8px;
+  margin-top: 6px;
   background: transparent;
-  border: 1px solid white;
+  border: none;
   color: white;
-  padding: 6px;
-  border-radius: 6px;
   cursor: pointer;
 }

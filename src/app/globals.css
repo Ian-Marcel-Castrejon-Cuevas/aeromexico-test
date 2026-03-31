@@ -1,6 +1,168 @@
 body {
   margin: 0;
-  padding: 0;
-  background-color: #0f0f0f;
-  color: white;
+  background: url("../media/background.jpg") no-repeat center/cover;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.panel {
+  display: flex;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  width: 900px;
+  gap: 20px;
+}
+
+.left {
+  flex: 1;
+}
+
+.mainImage {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.searchContainer {
+  position: relative;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 17px;
+  top: 47%;
+  transform: translateY(-50%);
+
+  width: 9px;
+  height: 9px;
+
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+}
+
+.searchIcon::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background: #00ff00;
+
+  bottom: -3px;
+  right: -4px;
+
+  transform: rotate(45deg);
+}
+
+.search {
+  padding: 6px 10px 6px 40px;
+  border-radius: 10px;
+  border: 1px solid #00ff00;
+  background: transparent;
+  color: #00ff00;
+
+  font-size: 12px;
+  height: 32px;
+  width: 100%;
+}
+
+.search::placeholder {
+  color: #00ff00;
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #00ff00;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+
+  height: 400px;
+  overflow-y: auto;
+  padding-right: 6px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.grid::-webkit-scrollbar {
+  display: none;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 10px;
+}
+
+.gridContainer {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  right: -8px;
+
+  width: 30px;
+  height: 30px;
+
+  background: #7a7a7a;
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.2s ease;
+}
+
+.arrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+
+  transform: rotate(45deg) translate(1px, 1px);
+}
+
+.arrow:hover::before {
+  border-color: #00ff00;
+}
+
+.arrow:active {
+  background: #4a4a4a;
+}
+
+.arrow:active::before {
+  border-color: #00ff00;
+}
+
+.arrow.up {
+  top: 0;
+}
+
+.arrow.down {
+  bottom: 0;
+  transform: rotate(180deg);
 }
