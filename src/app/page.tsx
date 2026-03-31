@@ -83,7 +83,6 @@ export default function Home() {
             <span className="searchIcon"></span>
             <input className="search" placeholder="Find your character..." />
           </div>
-
           <div className="gridContainer">
             <button
               className="arrow up"
@@ -112,8 +111,7 @@ export default function Home() {
               }}
             />
           </div>
-
-          <FavoritesList />
+          <FavoritesList onSelect={setSelected} />{" "}
         </div>
       </div>
     </main>
