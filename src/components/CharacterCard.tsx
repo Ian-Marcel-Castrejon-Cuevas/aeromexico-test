@@ -15,7 +15,7 @@ export const CharacterCard = ({ character }: Props) => {
   useEffect(() => {
     const checkFavorite = async () => {
       const favs = await getFavorites()
-      const exists = favs.find((f) => f.id === character.id)
+      const exists = favs.find((f) => f.apiId === character.id)
       setIsFavorite(!!exists)
     }
 
